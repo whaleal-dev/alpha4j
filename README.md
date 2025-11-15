@@ -2,7 +2,7 @@
 
 **高性能量化因子计算 Java SDK**
 
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/arkmsg/stocks-alpha-sdk)
+[![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://github.com/arkmsg/alpha-sdk)
 [![Java Version](https://img.shields.io/badge/Java-17+-blue.svg)](https://www.oracle.com/java/)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
 
@@ -34,7 +34,7 @@ Stocks Alpha SDK 是一个高性能的量化因子计算库，提供了业界标
 ```xml
 <dependency>
     <groupId>io.github.arkmsg</groupId>
-    <artifactId>stocks-alpha-sdk</artifactId>
+    <artifactId>alpha-sdk</artifactId>
     <version>1.0.0</version>
 </dependency>
 ```
@@ -100,7 +100,6 @@ System.out.println("因子总数：" + result.getFactorCount());  // 输出：36
 - 因子数量：101 个
 - 参考实现：WorldQuant Alpha101
 - 状态：✅ 全部实现并验证
-- 文档：[ALPHA101_FINAL_VERIFICATION_REPORT.md](ALPHA101_FINAL_VERIFICATION_REPORT.md)
 
 **特点**：
 - ✅ 与 Python 参考实现完全对齐
@@ -182,11 +181,6 @@ System.out.println("MA5: " + result.getFactors().get("MA5"));       // 输出：
 System.out.println("因子总数：" + result.getFactorCount());  // 输出：159
 ```
 
-**详细文档**：
-- [ALPHA158_FINAL_SUMMARY.md](ALPHA158_FINAL_SUMMARY.md) - 完整总结
-- [ALPHA158_179_CONFIG.md](ALPHA158_179_CONFIG.md) - 179 配置详解
-- [ALPHA158_EXCLUDE_MECHANISM.md](ALPHA158_EXCLUDE_MECHANISM.md) - Exclude 机制
-- [ALPHA158_TYPE_NAMING.md](ALPHA158_TYPE_NAMING.md) - 类型命名说明
 
 ---
 
@@ -450,7 +444,7 @@ BUILD SUCCESS ✅
 ## 📁 项目结构
 
 ```
-stocks-alpha-sdk/
+alpha4J/
 ├── src/main/java/io/github/arkmsg/alpha/
 │   ├── model/                    # 数据模型
 │   │   └── Candlestick.java     # K 线数据
@@ -470,13 +464,7 @@ stocks-alpha-sdk/
 │   ├── AlphaFeatureVector.java  # 特征向量
 │   └── AlphaDataset.java        # 数据集
 ├── src/test/java/               # 单元测试
-├── docs/                        # 文档
-│   ├── STATUS.md                       # 项目状态
-│   ├── ALPHA101_FINAL_VERIFICATION_REPORT.md
-│   ├── ALPHA158_FINAL_SUMMARY.md
-│   ├── ALPHA158_179_CONFIG.md
-│   ├── ALPHA158_EXCLUDE_MECHANISM.md
-│   └── ALPHA158_TYPE_NAMING.md
+├── pom.xml                      # Maven 配置
 └── README.md                    # 本文档
 ```
 
@@ -485,9 +473,8 @@ stocks-alpha-sdk/
 ## 🚀 快速验证
 
 ```bash
-# 克隆项目
-git clone https://github.com/arkmsg/stocks-alpha-sdk.git
-cd stocks-alpha-sdk
+# 进入项目目录
+cd biz-common/alpha4J
 
 # 编译项目
 mvn clean compile
@@ -495,22 +482,14 @@ mvn clean compile
 # 运行测试
 mvn test
 
-# 打包
-mvn package
+# 安装到本地仓库
+mvn clean install
+
+# 发布到远程仓库
+mvn clean deploy
 ```
 
 ---
-
-## 📖 详细文档
-
-| 文档 | 说明 |
-|------|------|
-| [STATUS.md](STATUS.md) | 项目状态总览 |
-| [ALPHA101_FINAL_VERIFICATION_REPORT.md](ALPHA101_FINAL_VERIFICATION_REPORT.md) | Alpha101 验证报告 |
-| [ALPHA158_FINAL_SUMMARY.md](ALPHA158_FINAL_SUMMARY.md) | Alpha158 完整总结 |
-| [ALPHA158_179_CONFIG.md](ALPHA158_179_CONFIG.md) | 179 配置详细文档 |
-| [ALPHA158_EXCLUDE_MECHANISM.md](ALPHA158_EXCLUDE_MECHANISM.md) | Exclude 机制详解 |
-| [ALPHA158_TYPE_NAMING.md](ALPHA158_TYPE_NAMING.md) | 类型命名说明 |
 
 ---
 
@@ -538,7 +517,6 @@ exclude 0 个算子  → 159 个（全部有值）
 ✅ 因子数量固定，只是被 exclude 的因子值为 0.0
 ```
 
-详见：[ALPHA158_EXCLUDE_MECHANISM.md](ALPHA158_EXCLUDE_MECHANISM.md)
 
 ### Q3: 179 配置与 159 配置有什么区别？
 
@@ -558,7 +536,6 @@ exclude 0 个算子  → 159 个（全部有值）
 ✅ 向后兼容：前 159 个与标准配置完全相同
 ```
 
-详见：[ALPHA158_179_CONFIG.md](ALPHA158_179_CONFIG.md)
 
 ### Q4: 如何自定义 exclude 列表？
 
@@ -619,8 +596,8 @@ Alpha158Config config = Alpha158Config.builder()
 
 ## 📞 联系方式
 
-- **项目地址**: https://github.com/arkmsg/stocks-alpha-sdk
-- **问题反馈**: https://github.com/arkmsg/stocks-alpha-sdk/issues
+- **项目地址**: https://github.com/arkmsg/alpha-sdk
+- **问题反馈**: https://github.com/arkmsg/alpha-sdk/issues
 - **作者**: arkmsg
 
 ---
