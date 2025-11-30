@@ -34,9 +34,19 @@ Stocks Alpha SDK 是一个高性能的量化因子计算库，提供了业界标
 ```xml
 <dependency>
     <groupId>io.github.arkmsg</groupId>
-    <artifactId>alpha-sdk</artifactId>
+    <artifactId>alpha4j</artifactId>
     <version>1.0.0</version>
 </dependency>
+```
+
+**从GitHub Packages获取**：
+```xml
+<repositories>
+    <repository>
+        <id>githubarkmsg</id>
+        <url>https://maven.pkg.github.com/arkmsg/ark-nexus</url>
+    </repository>
+</repositories>
 ```
 
 ### 2. 使用示例
@@ -44,9 +54,11 @@ Stocks Alpha SDK 是一个高性能的量化因子计算库，提供了业界标
 #### Alpha101（101 个因子）
 
 ```java
-import io.github.arkmsg.alpha.*;
-import io.github.arkmsg.alpha.calculator.Alpha101Calculator;
-import io.github.arkmsg.alpha.model.Candlestick;
+import com.whaleal.ark.alpha.AlphaFactorResult;
+import com.whaleal.ark.alpha.calculator.Alpha101Calculator;
+import com.whaleal.ark.alpha.model.Candlestick;
+import java.util.List;
+import java.util.Map;
 
 // 准备 K 线数据（至少 60 根）
 List<Candlestick> data = loadKLineData();
@@ -63,8 +75,9 @@ System.out.println("Alpha#1: " + factors.get("ALPHA001"));
 #### Alpha158（159 个因子）
 
 ```java
-import io.github.arkmsg.alpha.*;
-import io.github.arkmsg.alpha.calculator.Alpha158Calculator;
+import com.whaleal.ark.alpha.Alpha158Config;
+import com.whaleal.ark.alpha.AlphaFactorResult;
+import com.whaleal.ark.alpha.calculator.Alpha158Calculator;
 
 // 方式1：使用默认配置（推荐）
 AlphaFactorResult result = Alpha158Calculator.calculate(data);
@@ -72,18 +85,18 @@ System.out.println("因子总数：" + result.getFactorCount());  // 输出：15
 
 // 方式2：使用自定义配置
 Alpha158Config config = Alpha158Config.createDefault();
-AlphaFactorResult result = Alpha158Calculator.calculate(data, config);
+AlphaFactorResult result2 = Alpha158Calculator.calculate(data, config);
 
 // 方式3：使用扩展配置（179 个因子）
-Alpha158Config config = Alpha158Config.createExtended();
-AlphaFactorResult result = Alpha158Calculator.calculate(data, config);
-System.out.println("因子总数：" + result.getFactorCount());  // 输出：179
+Alpha158Config config179 = Alpha158Config.createExtended();
+AlphaFactorResult result3 = Alpha158Calculator.calculate(data, config179);
+System.out.println("因子总数：" + result3.getFactorCount());  // 输出：179
 ```
 
 #### Alpha360（360 个因子）
 
 ```java
-import io.github.arkmsg.alpha.calculator.Alpha360Calculator;
+import com.whaleal.ark.alpha.calculator.Alpha360Calculator;
 
 AlphaFactorResult result = Alpha360Calculator.calculate(data);
 System.out.println("因子总数：" + result.getFactorCount());  // 输出：360
@@ -444,8 +457,8 @@ BUILD SUCCESS ✅
 ## 📁 项目结构
 
 ```
-alpha4J/
-├── src/main/java/io/github/arkmsg/alpha/
+alpha4j/
+├── src/main/java/com/whaleal/ark/alpha/
 │   ├── model/                    # 数据模型
 │   │   └── Candlestick.java     # K 线数据
 │   ├── calculator/               # 计算器
@@ -474,7 +487,7 @@ alpha4J/
 
 ```bash
 # 进入项目目录
-cd biz-common/alpha4J
+cd alpha4j
 
 # 编译项目
 mvn clean compile
@@ -485,8 +498,8 @@ mvn test
 # 安装到本地仓库
 mvn clean install
 
-# 发布到远程仓库
-mvn clean deploy
+# 发布到GitHub Packages
+mvn clean deploy -DaltDeploymentRepository=githubarkmsg::https://maven.pkg.github.com/arkmsg/ark-nexus
 ```
 
 ---
@@ -596,9 +609,10 @@ Alpha158Config config = Alpha158Config.builder()
 
 ## 📞 联系方式
 
-- **项目地址**: https://github.com/arkmsg/alpha-sdk
-- **问题反馈**: https://github.com/arkmsg/alpha-sdk/issues
-- **作者**: arkmsg
+- **项目地址**: https://github.com/arkmsg/alpha4j
+- **问题反馈**: https://github.com/arkmsg/alpha4j/issues
+- **Maven仓库**: https://maven.pkg.github.com/arkmsg/ark-nexus
+- **作者**: Whaleal Ark Team
 
 ---
 

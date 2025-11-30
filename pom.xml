@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.arkmsg</groupId>
-    <artifactId>alpha-sdk</artifactId>
+    <artifactId>alpha4j</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
