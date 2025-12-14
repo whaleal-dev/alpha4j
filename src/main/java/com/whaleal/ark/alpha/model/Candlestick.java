@@ -74,4 +74,46 @@ public class Candlestick {
         }
         return amount / volume;
     }
+
+    /**
+     * 从 stocks-indicator-sdk 的 Candlestick 转换
+     *
+     * @param source stocks-indicator-sdk 的 Candlestick
+     * @return alpha4j 的高性能 Candlestick
+     */
+    public static Candlestick from(com.whaleal.ark.cloud.stocks.indicator.model.Candlestick source) {
+        if (source == null) {
+            return null;
+        }
+        return Candlestick.builder()
+                .symbol(source.getSymbol())
+                .timestamp(source.getTimestamp())
+                .open(source.getOpen())
+                .high(source.getHigh())
+                .low(source.getLow())
+                .close(source.getClose())
+                .volume(source.getVolume())
+                .amount(source.getAmount())
+                .turnoverRate(source.getTurnoverRate())
+                .build();
+    }
+
+    /**
+     * 转换为 stocks-indicator-sdk 的 Candlestick
+     *
+     * @return stocks-indicator-sdk 的 Candlestick
+     */
+    public com.whaleal.ark.cloud.stocks.indicator.model.Candlestick toIndicatorCandlestick() {
+        return com.whaleal.ark.cloud.stocks.indicator.model.Candlestick.builder()
+                .symbol(symbol)
+                .timestamp(timestamp)
+                .open(open)
+                .high(high)
+                .low(low)
+                .close(close)
+                .volume(volume)
+                .amount(amount)
+                .turnoverRate(turnoverRate)
+                .build();
+    }
 }

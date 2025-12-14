@@ -5,7 +5,7 @@
          http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.arkmsg</groupId>
+    <groupId>com.whaleal.quant</groupId>
     <artifactId>alpha4j</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
@@ -34,6 +34,14 @@
     </properties>
 
     <dependencies>
+        <!-- stocks-indicator-sdk：统一数据模型 -->
+        <dependency>
+            <groupId>com.whaleal.quant</groupId>
+            <artifactId>stocks-indicator-sdk</artifactId>
+            <version>1.0.0</version>
+            <optional>true</optional>
+        </dependency>
+
         <!-- Lombok：减少样板代码 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
