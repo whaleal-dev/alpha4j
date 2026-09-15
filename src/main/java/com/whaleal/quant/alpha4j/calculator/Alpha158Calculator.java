@@ -1,6 +1,6 @@
 package com.whaleal.quant.alpha4j.calculator;
 
-import com.whaleal.ark.alpha.*;
+
 import com.whaleal.quant.alpha4j.*;
 import com.whaleal.quant.alpha4j.model.Candlestick;
 import lombok.extern.slf4j.Slf4j;

@@ -21,27 +21,19 @@
     </description>
 
     <properties>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- 依赖版本 -->
+        <!-- 依赖版本（logback 1.3.x 支持 JDK 8；1.4+ 需要 JDK 11） -->
         <lombok.version>1.18.38</lombok.version>
         <slf4j.version>2.0.9</slf4j.version>
-        <logback.version>1.4.11</logback.version>
+        <logback.version>1.3.15</logback.version>
         <junit.version>5.10.1</junit.version>
     </properties>
 
     <dependencies>
-        <!-- stocks-indicator-sdk：统一数据模型 -->
-        <dependency>
-            <groupId>com.whaleal.quant</groupId>
-            <artifactId>stocks-indicator-sdk</artifactId>
-            <version>1.0.0</version>
-            <optional>true</optional>
-        </dependency>
-
         <!-- Lombok：减少样板代码 -->
         <dependency>
             <groupId>org.projectlombok</groupId>

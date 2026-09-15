@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -459,8 +460,8 @@ class RollingStatCalculatorTest {
     @Test
     @DisplayName("calculateAll - 批量计算所有因子")
     void testCalculateAll() {
-        List<Integer> windows = List.of(5, 10, 20);
-        List<String> operators = List.of("ROC", "MA", "STD", "MAX", "MIN", "CORR", "CORD");
+        List<Integer> windows = Arrays.asList(5, 10, 20);
+        List<String> operators = Arrays.asList("ROC", "MA", "STD", "MAX", "MIN", "CORR", "CORD");
 
         Map<String, Double> factors = RollingStatCalculator.calculateAll(testData, windows, operators);
 
@@ -485,8 +486,8 @@ class RollingStatCalculatorTest {
     @Test
     @DisplayName("calculateAll - 所有29个算子")
     void testCalculateAll_AllOperators() {
-        List<Integer> windows = List.of(5);
-        List<String> operators = List.of(
+        List<Integer> windows = Arrays.asList(5);
+        List<String> operators = Arrays.asList(
             "ROC", "MA", "STD", "BETA", "RSQR", "RESI",
             "MAX", "MIN", "QTLU", "QTLD", "RANK", "RSV",
             "IMAX", "IMIN", "IMXD", "CORR", "CORD",
@@ -609,8 +610,8 @@ class RollingStatCalculatorTest {
 
         Map<String, Double> factors = RollingStatCalculator.calculateAll(
             largeData,
-            List.of(5, 10, 20, 30, 60),
-            List.of("ROC", "MA", "STD", "MAX", "MIN", "CORR", "CORD")
+            Arrays.asList(5, 10, 20, 30, 60),
+            Arrays.asList("ROC", "MA", "STD", "MAX", "MIN", "CORR", "CORD")
         );
 
         long endTime = System.currentTimeMillis();

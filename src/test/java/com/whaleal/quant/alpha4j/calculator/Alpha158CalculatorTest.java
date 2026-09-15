@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -43,12 +44,12 @@ class Alpha158CalculatorTest {
         Alpha158Config config = Alpha158Config.builder()
             .enableKbar(true)
             .enablePrice(true)
-            .priceWindows(List.of(0, 5, 10))
-            .priceFeatures(List.of("OPEN", "HIGH", "LOW", "VWAP"))
+            .priceWindows(Arrays.asList(0, 5, 10))
+            .priceFeatures(Arrays.asList("OPEN", "HIGH", "LOW", "VWAP"))
             .enableVolume(false)
             .enableRolling(true)
-            .rollingWindows(List.of(5, 10, 20))
-            .rollingInclude(List.of("ROC", "MA", "STD", "BETA", "RSQR"))
+            .rollingWindows(Arrays.asList(5, 10, 20))
+            .rollingInclude(Arrays.asList("ROC", "MA", "STD", "BETA", "RSQR"))
             .build();
 
         AlphaFactorResult result = Alpha158Calculator.calculate(testData, config);

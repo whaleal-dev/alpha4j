@@ -1,9 +1,9 @@
-<p align="center"><img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:2E86C1&height=180&section=header&text=alpha4j&fontSize=46&fontColor=ffffff&animation=fadeIn&desc=Qlib%20%2F%20WorldQuant%20Alpha%20factors%20for%20JDK%2017%2B&descAlignY=68" alt="alpha4j banner" /></p>
-<p align="center"><a href="https://github.com/whaleal-dev/alpha4j"><img src="https://img.shields.io/badge/GitHub-whaleal--dev%2Falpha4j-181717" alt="GitHub" /></a> <a href="https://whaleal.com"><img src="https://img.shields.io/badge/Docs-whaleal.com-0A7EA4" alt="Docs" /></a> <a href="https://www.apache.org/licenses/LICENSE-2.0.txt"><img src="https://img.shields.io/badge/License-Apache%202.0-1F6FEB" alt="License" /></a> <img src="https://img.shields.io/badge/JDK-17%2B-2EA043" alt="JDK 17+" /></p>
+<p align="center"><img src="https://capsule-render.vercel.app/api?type=waving&color=0:6A5ACD,100:2E86C1&height=180&section=header&text=alpha4j&fontSize=46&fontColor=ffffff&animation=fadeIn&desc=Qlib%20%2F%20WorldQuant%20Alpha%20factors%20for%20JDK%208%2B&descAlignY=68" alt="alpha4j banner" /></p>
+<p align="center"><a href="https://github.com/whaleal-dev/alpha4j"><img src="https://img.shields.io/badge/GitHub-whaleal--dev%2Falpha4j-181717" alt="GitHub" /></a> <a href="https://whaleal.com"><img src="https://img.shields.io/badge/Docs-whaleal.com-0A7EA4" alt="Docs" /></a> <a href="https://www.apache.org/licenses/LICENSE-2.0.txt"><img src="https://img.shields.io/badge/License-Apache%202.0-1F6FEB" alt="License" /></a> <img src="https://img.shields.io/badge/JDK-8%2B-2EA043" alt="JDK 8+" /></p>
 
 # alpha4j
 
-**alpha4j 是面向 JDK 17+ 的 Java Alpha 因子库**，不是交易平台、不是技术分析引擎、也不是现成的选股软件。
+**alpha4j 是面向 JDK 8+ 的 Java Alpha 因子库**，不是交易平台、不是技术分析引擎、也不是现成的选股软件。
 
 它只做一件事：把 K 线算成固定维度的因子向量，给你的模型或打分逻辑当选股特征。纯 Java，无 Python 依赖。
 

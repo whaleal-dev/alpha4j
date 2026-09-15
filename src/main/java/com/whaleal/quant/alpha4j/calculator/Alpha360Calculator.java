@@ -1,6 +1,6 @@
 package com.whaleal.quant.alpha4j.calculator;
 
-import com.whaleal.ark.alpha.*;
+
 import com.whaleal.quant.alpha4j.*;
 import com.whaleal.quant.alpha4j.model.Candlestick;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +26,7 @@ import java.util.List;
  * - TODO: 需要同步更新 Alpha360FactorOrder 的因子顺序生成逻辑
  *
  * @author arkmsg
+ * @author 恒哥
  * @see Alpha360Config 配置类（当前未生效）
  */
 @Slf4j
@@ -156,17 +157,29 @@ public class Alpha360Calculator {
 
             Candlestick candle = data.get(index);
 
-            double value = switch (feature.toUpperCase()) {
-                case "CLOSE" -> candle.getClose();
-                case "OPEN" -> candle.getOpen();
-                case "HIGH" -> candle.getHigh();
-                case "LOW" -> candle.getLow();
-                case "VWAP" -> candle.getVwap();
-                default -> {
+            String featureName = feature.toUpperCase();
+            double value;
+            switch (featureName) {
+                case "CLOSE":
+                    value = candle.getClose();
+                    break;
+                case "OPEN":
+                    value = candle.getOpen();
+                    break;
+                case "HIGH":
+                    value = candle.getHigh();
+                    break;
+                case "LOW":
+                    value = candle.getLow();
+                    break;
+                case "VWAP":
+                    value = candle.getVwap();
+                    break;
+                default:
                     log.warn("未知的价格特征: {}", feature);
-                    yield 0.0;
-                }
-            };
+                    value = 0.0;
+                    break;
+            }
 
             return value / currentClose;
 

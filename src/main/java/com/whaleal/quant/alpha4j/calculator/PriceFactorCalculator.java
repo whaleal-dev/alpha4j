@@ -19,6 +19,7 @@ import java.util.*;
  * 归一化：所有价格因子除以当前收盘价
  *
  * @author arkmsg
+ * @author 恒哥
  */
 @Slf4j
 public class PriceFactorCalculator {
@@ -72,16 +73,26 @@ public class PriceFactorCalculator {
             Candlestick targetCandle = data.get(data.size() - 1 - window);
 
             // 提取特征值
-            double value = switch (feature.toUpperCase()) {
-                case "OPEN" -> targetCandle.getOpen();
-                case "HIGH" -> targetCandle.getHigh();
-                case "LOW" -> targetCandle.getLow();
-                case "VWAP" -> targetCandle.getVwap();
-                default -> {
+            String featureName = feature.toUpperCase();
+            double value;
+            switch (featureName) {
+                case "OPEN":
+                    value = targetCandle.getOpen();
+                    break;
+                case "HIGH":
+                    value = targetCandle.getHigh();
+                    break;
+                case "LOW":
+                    value = targetCandle.getLow();
+                    break;
+                case "VWAP":
+                    value = targetCandle.getVwap();
+                    break;
+                default:
                     log.warn("未知的价格特征: {}", feature);
-                    yield 0.0;
-                }
-            };
+                    value = 0.0;
+                    break;
+            }
 
             // 归一化：除以当前收盘价
             return value / currentClose;

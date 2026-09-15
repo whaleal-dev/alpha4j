@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
  * - 支持缺失值处理
  *
  * @author arkmsg
+ * @author 恒哥
  */
 @Getter
 public class AlphaFeatureVector {
@@ -76,7 +77,7 @@ public class AlphaFeatureVector {
 
         this.symbol = symbol;
         this.timestamp = timestamp;
-        this.factorNames = List.copyOf(factorNames); // 不可变副本
+        this.factorNames = Collections.unmodifiableList(new ArrayList<>(factorNames));
         this.values = Arrays.copyOf(values, values.length); // 防御性复制
         this.alphaType = alphaType;
     }
@@ -135,7 +136,7 @@ public class AlphaFeatureVector {
      * @return 特征值列表
      */
     public List<Double> toList() {
-        return Arrays.stream(values).boxed().toList();
+        return Arrays.stream(values).boxed().collect(Collectors.toList());
     }
 
     /**

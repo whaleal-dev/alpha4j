@@ -3,6 +3,7 @@ package com.whaleal.quant.alpha4j;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
  * 3. 数据导出：导出为CSV、NumPy数组等格式
  *
  * @author arkmsg
+ * @author 恒哥
  */
 @Getter
 public class AlphaDataset {
@@ -45,7 +47,7 @@ public class AlphaDataset {
     public AlphaDataset(AlphaFeatureVector.AlphaType alphaType, List<String> expectedFactorOrder) {
         this.features = new ArrayList<>();
         this.alphaType = alphaType;
-        this.expectedFactorOrder = List.copyOf(expectedFactorOrder);
+        this.expectedFactorOrder = Collections.unmodifiableList(new ArrayList<>(expectedFactorOrder));
     }
 
     /**
