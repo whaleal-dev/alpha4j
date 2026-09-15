@@ -21,9 +21,10 @@ import io.github.arkmsg.alpha.*;  // ❌ 旧包名
 ```
 
 **修复后**：
+
 ```java
 // 已删除该导入，使用正确的包名导入
-import com.whaleal.ark.alpha.*;  // ✅ 新包名
+
 ```
 
 **修复状态**：✅ 已修复
